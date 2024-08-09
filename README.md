@@ -38,9 +38,23 @@ To impelemnt ANNA, we would need the following software and packages to start wi
 ### miniconda
 
 ### Apache HTTP Server
-1. Download Apache HTTP Server
+1. Download Apache HTTP Server source codes.
 2. Extract the source codes to each folder starting with `Apache24_`.
-3. 
+3. Edit each Apache's configuration files:
+  - The following configurations need to be changed:
+    - Define SRVROOT Path
+    - Listen
+    - ServerAdmin (Optional)
+  - The following configuration need to be added:
+    - ```
+    LoadFile `Your Python .dll file path`
+    LoadModule wsgi_module `Your Python mod_wsgi.pyd file path`
+    WSGIPythonHome `Your Python Virtual Environment folder path`
+    WSGIApplicationGroup %{GLOBAL}
+    ```
+4. Install all Apache servers as Windows NT services.
+    > Note: For each apache server, it must have different service names, for ANNA Main server, it can be `Apache2.4`, while Leptospirosis Server can be named as `Apache24_Lepto` and TommyPy Server can be named as `Apache24_Tommy`.
+
 
 ### MySQL Community Server
 
