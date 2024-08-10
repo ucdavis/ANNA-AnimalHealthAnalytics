@@ -28,23 +28,36 @@ To impelemnt ANNA, we would need the following software and packages to start wi
 - miniconda 
 - Apache HTTP Server
 - MySQL Community Server (GPL) Version 8.4.2 LTS
+- MySQL Workbench (Optional)
 - MATLAB Runtime R2019b (v9.7)
 - List of Python Packages specified in the requirement text file.
 
-## Installation
+### Sofrware Description
 
+Python 3.9 is the Python version used in ANNA Main Server and Leptospirosis Flask Server.
+
+Python 3.7 is the Python verison used in TommyPy Flask Server. Our approach is to use miniconda to manage the virtual environment for installing legacy packages. 
+
+## Installation
 ### Python
 
+Download and install Python 3.7 and Python 3.9 from official site.
+
+> The installation should b
+
 ### miniconda
+
 
 ### Apache HTTP Server
 1. Download Apache HTTP Server source codes.
 2. Extract the source codes to each folder starting with `Apache24_`.
 3. Edit each Apache's configuration files:
   - The following configurations need to be changed:
-    - Define SRVROOT Path
-    - Listen
-    - ServerAdmin (Optional)
+  ```
+  Define SRVROOT Path
+  Listen
+  ServerAdmin (Optional)
+  ```
   - The following configuration need to be added:
   ```
   LoadFile `Your Python .dll file path`
@@ -52,15 +65,31 @@ To impelemnt ANNA, we would need the following software and packages to start wi
   WSGIPythonHome `Your Python Virtual Environment folder path`
   WSGIApplicationGroup %{GLOBAL}
   ```
-  
+
 4. Install all Apache servers as Windows NT services.
     > Note: For each apache server, it must have different service names, for ANNA Main server, it can be `Apache2.4`, while Leptospirosis Server can be named as `Apache24_Lepto` and TommyPy Server can be named as `Apache24_Tommy`.
 
 
 ### MySQL Community Server
+1. Download and install MySQL Community Server (GPL) Version 8.4.2 LTS
+2. Download and install MySQL Workbench (Optional)
+    > Note: MySQL Workbench is a graphical interface of managing MySQL relational database.
+3. Set up at least two SQL users other than `root` user with different user rights.
+
+> Note: We use default port number for MySQL. 
 
 ### MATLAB Runtime
+1. Download and install MATLAB Runtime R2019b
+2. In Windows System Environment Variables, set MATLAB Cache path:
+    - Variable: `MCR_CACHE_ROOT`
+    - Value: `C:\MATLAB Cache`
 
 ### Python Packages
+
+There are two Python requirement lists. 
+
+- `requirement_anna_main.txt` is used in ANNA Main Server and Leptospirosis Flask Server.
+- `requirement_anna_tommypy.txt` is used in TommyPy Flask Python environment. Run package installation to the `miniconda` environment.
+
 
 ## Folder Structure
