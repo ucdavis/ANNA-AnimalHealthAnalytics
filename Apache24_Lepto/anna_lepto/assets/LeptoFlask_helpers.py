@@ -1,0 +1,42 @@
+log_path = 'C:/Apache24_Lepto/logs/anna_lepto.log'
+
+sample_initialize_path = 'C:/Apache24_Lepto/anna_lepto/assets/lepto_initialize.csv'
+
+data_dir = "C:/Apache24_Lepto/anna_lepto/assets/"
+
+lepto_d = {'Hgb': 'float64', 
+           'Hct': 'float64',
+           'MCV': 'float64',
+           'WBC': 'float64',
+           'Neut': 'float64',
+           'Lymph': 'float64',
+           'Mono': 'float64',
+           'Eosin': 'float64',
+           'Plt': 'float64',
+           'Bands': 'float64',
+           'Albumin': 'float64',
+           'ALP': 'float64',
+           'ALT': 'float64',
+           'AST': 'float64',
+           'Bilirubin': 'float64',
+           'BUN': 'float64',
+           'Calcium': 'float64',
+           'Cholesterol': 'float64',
+           'Creatinine': 'float64',
+           'GGT': 'float64',
+           'Globulin': 'float64',
+           'Glucose': 'float64',
+           'Phosphorus': 'float64',
+           'Total Protein': 'float64',
+           'Anion Gap': 'float64',
+           'Chloride': 'float64',
+           'Sodium': 'float64',
+           'Potassium': 'float64',
+           'Bicarb': 'float64',
+           'Weight': 'float64',
+           'Sex': 'int64',
+           'Breed': 'O',
+           'Breed Group': 'O',
+           'Urine Specific Gravity': 'float64',
+           'Urine Glucose': 'float64',
+           'Urine Protein': 'float64'}
