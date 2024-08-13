@@ -90,6 +90,34 @@ There are two Python requirement lists.
 
 - `requirement_anna_main.txt` is used in ANNA Main Server and Leptospirosis Flask Server.
 - `requirement_anna_tommypy.txt` is used in TommyPy Flask Python environment. Run package installation to the `miniconda` environment.
+    - TommyPy requires separate installation: See the original GitHub repo: [Link](https://github.com/krystlereagan/Tommy)
 
 
 ## Folder Structure
+```
+- Apache24
+    - Other Apache Source Code Folders
+    - anna_main
+        - apps
+            - scripts
+            - wsgi_scripts
+        - assets
+
+- Apache_Lepto
+    - Other Apache Source Code Folders
+    - anna_lepto
+        - apps
+            - scripts
+            - wsgi_scripts
+        - assets
+- Apache24_Lepto
+    - Other Apache Source Code Folders
+    - anna_tommypy
+        - apps
+            - scripts
+            - wsgi_scripts
+        - assets
+.gitignore
+README.md
+
+```
