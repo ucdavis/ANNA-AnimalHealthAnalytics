@@ -708,15 +708,9 @@ def df_merge(result_dict, date, micro_need=False, immu_need=False):
 
 # MySQL Implementation
 def lepto_result_database_write_sql(patientid, prediction, testid_cbc, date_cbc, testid_chem, date_chem, testid_ua, date_ua, testid_mat, date_mat, testid_leptoPCR, date_leptoPCR, testid_leptoLF, date_leptoLF):
-    hostname = platform.node()
-    if hostname == 'data-analytics-test':
-        host_ip = "localhost"
-        sql_password = os.getenv("ANNA_FULL_SQL_PASSWORD") #If in test use this
-        sql_username = os.getenv("ANNA_FULL_SQL_USERNAME")
-    else:
-        host_ip = os.getenv("ANNA_Test_IP")
-        sql_password = os.getenv("ANNA_FULL_PROD_SQL_PASSWORD") #if in production use this
-        sql_username = os.getenv("ANNA_FULL_PROD_SQL_USERNAME")
+    host_ip = "localhost"
+    sql_username = os.getenv("ANNA_FULL_SQL_USERNAME")
+    sql_password = os.getenv("ANNA_FULL_SQL_PASSWORD")
     
     mydb = MySQLdb.connect(host=host_ip,
                           user=sql_username,
@@ -763,15 +757,9 @@ def lepto_result_database_write_sql(patientid, prediction, testid_cbc, date_cbc,
     return classifier_timestamp_list
 
 def tommy_result_database_write_sql(patientid, prediction, testid_cbc, date_cbc, testid_chem, date_chem):
-    hostname = platform.node()
-    if hostname == 'data-analytics-test':
-        host_ip = "localhost"
-        sql_password = os.getenv("ANNA_FULL_SQL_PASSWORD") #If in test use this
-        sql_username = os.getenv("ANNA_FULL_SQL_USERNAME")
-    else:
-        host_ip = os.getenv("ANNA_Test_IP")
-        sql_password = os.getenv("ANNA_FULL_PROD_SQL_PASSWORD") #if in production use this
-        sql_username = os.getenv("ANNA_FULL_PROD_SQL_USERNAME")
+    host_ip = "localhost"
+    sql_username = os.getenv("ANNA_FULL_SQL_USERNAME")
+    sql_password = os.getenv("ANNA_FULL_SQL_PASSWORD")
 
     mydb = MySQLdb.connect(host=host_ip,
                           user=sql_username,
@@ -787,11 +775,11 @@ def tommy_result_database_write_sql(patientid, prediction, testid_cbc, date_cbc,
             c=mydb.cursor()
             tmp_testid_cbc = testid_cbc[i]
             tmp_testid_chem = testid_chem[i]
-            check_int = c.execute("""SELECT * FROM tommypy_firstrun_v2 WHERE Testid_cbc = %s and TestID_chem = %s""",
+            check_int = c.execute("""SELECT * FROM tommypy_firstrun WHERE Testid_cbc = %s and TestID_chem = %s""",
                                   (tmp_testid_cbc, tmp_testid_chem))
             if check_int == 0: # When there is no matching result from database, meaning it is firstrun:
                 data = [(timenow, patientid, prediction[i], testid_cbc[i], date_cbc[i], testid_chem[i], date_chem[i])]
-                c.executemany("""INSERT INTO tommypy_firstrun_v2 (ClassifierFirstRunDateTime, PatientID, Prediction,
+                c.executemany("""INSERT INTO tommypy_firstrun (ClassifierFirstRunDateTime, PatientID, Prediction,
                         TestID_cbc, Date_cbc, TestID_chem, Date_chem) 
                         VALUES (%s, %s, %s, %s, %s, %s, %s)""", data)
                 mydb.commit()
