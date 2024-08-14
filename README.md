@@ -15,6 +15,7 @@ Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Chris Brandt, Krystle Reagan, 
     * [MySQL Community Server](#mysql-community-server)
     * [Python Packages](#python-packages)
 * [Folder Structure](#folder-structure)
+* [ML Classifiers]()
 
 
 
@@ -124,3 +125,16 @@ There are two Python requirement lists.
 README.md
 
 ```
+
+## ML Classifiers
+
+### Lepto
+
+[Link to Original GitHub Repo](https://github.com/sf-deng/lepto-classifier)
+[Link to Publication](https://doi.org/10.1177%2F10406387221096781)
+
+
+### TommyPy
+
+[Link to Original GitHub Repo](https://github.com/krystlereagan/Tommy)
+[Link to Publication](https://www.sciencedirect.com/science/article/abs/pii/S0739724019300748?via%3Dihub)
