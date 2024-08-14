@@ -1,5 +1,5 @@
 # ANNA-AnimalHealthAnalytics
-A Python based Computational Server for analyzing Animal Health Data with AI
+A Python based Computational Server for analyzing Animal Health Data with ML Classifiers.
 
 School of Veterinary Medicine, University of California Davis
 
@@ -43,10 +43,13 @@ Python 3.7 is the Python verison used in TommyPy Flask Server. Our approach is t
 
 Download and install Python 3.7 and Python 3.9 from official site.
 
-> The installation should b
+> The installation should be done with administrative privileges.
 
 ### miniconda
 
+Download and install miniconda from official site.
+
+> The installation should be done with administrative privileges.
 
 ### Apache HTTP Server
 1. Download Apache HTTP Server source codes.
