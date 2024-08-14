@@ -413,7 +413,6 @@ def tommy_preprocessing(tommy_df):
 
 ## Lepto
 def lepto_preprocessing(lepto_df, lepto_breed_groups, use_mat=False):
-    hostname = platform.node()
     basic_cols = ['TestID_cbc','TestID_chem', 'TestID_ua']
     basicdate_cols = ['Date_cbc', 'Date_chem', 'Date_ua']
     plus_cols = {'TestID_mat':'Date_mat', 'TestID_leptoPCR': 'Date_leptoPCR', 'TestID_leptoLF':'Date_leptoLF'}
@@ -553,12 +552,6 @@ def convert_ua_for_lepto_clf(value, col):
 
 # Data Merge
 def df_merge(result_dict, date, micro_need=False, immu_need=False):
-    # This version consider +- 7 days of Lepto MAT Test:
-    # Hence the Microbiology is Time-Series
-    # This also consider Immunology DatFrame
-    # The Preprocessing of Microbiology happens here:
-    # Basically Not Merging MICRO at this stage
-    hostname = platform.node()
     date = datetime.strptime(date, '%Y-%m-%d').date()
     # Need to check colunm name:
     UA_cols = ['PatientID', 'Breed', 'Sex', 'Age', 'Weight', 'Date', 'Procedures', 'Procedures_group', 'TestID', 
