@@ -13,6 +13,9 @@ import traceback
 import MySQLdb
 import re
 
+## Read Required Files:
+lepto_breed_groups = pd.read_csv("Breed_group_stratification.csv")
+
 # Variables Define
 tommy_url = 'http://127.0.0.1:5001/tommy_addisons'
 lepto_url = 'http://127.0.0.1:5002/leptospirosis'
@@ -173,7 +176,7 @@ def xml_to_df_anna(request):
             df = pd.concat([df[(df['Report_Status'] == 'Final')], df[(df['Report_Status'] == 'FINAL')]], axis=0)
     return df
 
-def process_xml_parallel_date_specific(patientid, date, cbc_date_range=False,chmua_date_range=False, micro=False, immu=False):
+def process_xml_parallel(patientid, date, cbc_date_range=False,chmua_date_range=False, micro=False, immu=False):
     date_date = datetime.strptime(date, '%Y-%m-%d').date()
     date_specific_date = datetime.strptime(date, '%Y-%m-%d').strftime('%d%b%y')
     upper_date = (date_date + timedelta(days=5)).strftime('%y%m%d')
@@ -412,7 +415,7 @@ def tommy_preprocessing(tommy_df):
     return tommy_df_final, tommy_df_testids
 
 ## Lepto
-def lepto_preprocessing(lepto_df, lepto_breed_groups, use_mat=False):
+def lepto_preprocessing(lepto_df, use_mat=False):
     basic_cols = ['TestID_cbc','TestID_chem', 'TestID_ua']
     basicdate_cols = ['Date_cbc', 'Date_chem', 'Date_ua']
     plus_cols = {'TestID_mat':'Date_mat', 'TestID_leptoPCR': 'Date_leptoPCR', 'TestID_leptoLF':'Date_leptoLF'}
