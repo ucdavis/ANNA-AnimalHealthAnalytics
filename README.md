@@ -21,6 +21,8 @@ Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Chris Brandt, Krystle Reagan, 
 
 ## Introduction
 
+This GitHub repository contains the required source codes to run ANNA.
+
 ## Software Requirement
 
 To impelemnt ANNA, we would need the following software and packages to start with. In the following instructions, we are demostrated based on Windows machines.
@@ -131,10 +133,12 @@ README.md
 ### Lepto
 
 [Link to Original GitHub Repo](https://github.com/sf-deng/lepto-classifier)
+
 [Link to Publication](https://doi.org/10.1177%2F10406387221096781)
 
 
 ### TommyPy
 
 [Link to Original GitHub Repo](https://github.com/krystlereagan/Tommy)
+
 [Link to Publication](https://www.sciencedirect.com/science/article/abs/pii/S0739724019300748?via%3Dihub)
