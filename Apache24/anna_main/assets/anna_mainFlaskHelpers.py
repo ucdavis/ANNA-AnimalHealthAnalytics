@@ -11,7 +11,7 @@ import numpy as np
 from anna_mainFlaskSupplementalFunc import divergent_var_rename, df_merge_string_clean, df_merge
 from anna_mainFlaskSupplementalFunc import tommy_result_database_write_sql, lepto_result_database_write_sql
 from anna_mainFlaskSupplementalFunc import tommy_url, lepto_url
-from anna_mainFlaskSupplementalFunc import process_xml_parallel_date_specific
+from anna_mainFlaskSupplementalFunc import process_xml_parallel
 from anna_mainFlaskSupplementalFunc import failed_prediction_leptospirosis, failed_prediction_tommy_addisons
 from anna_mainFlaskSupplementalFunc import tommy_preprocessing, lepto_preprocessing
 
@@ -22,7 +22,7 @@ def tommypy(patient_id, date, sessionid, app_route):
     # End of Import
     if patient_id is not None and date is not None:
         try:
-            cbc_raw, chemua_raw = process_xml_parallel_date_specific(patient_id, date, chmua_date_range=True, micro=False, immu=False) #For TommyPy that reduce fetching:
+            cbc_raw, chemua_raw = process_xml_parallel(patient_id, date, chmua_date_range=True, micro=False, immu=False) #For TommyPy that reduce fetching:
             time_fetch = time.perf_counter()
             logging.info('Session {} - {}: Fetched Date-Specifc Data: Time used: {}s'.format(sessionid, app_route, round(time_fetch - time_tommy_start, 4)))
         except:
@@ -48,9 +48,7 @@ def tommypy(patient_id, date, sessionid, app_route):
                         merged_df_cleaned = df_merge_string_clean(merged_df)
                         tommy_data, tommy_testids = tommy_preprocessing(merged_df_cleaned)
                         tommy_data_json = tommy_data.to_json()
-                        ### Predictions:
                         prediction = requests.post(tommy_url, json=tommy_data_json).json()
-                        #pd.Series.to_list()
                         TestID_cbc = np.array(tommy_testids['TestID_cbc']).tolist()
                         TestID_chem = np.array(tommy_testids['TestID_chem']).tolist()
                         Date_cbc = tommy_testids['Date'].to_list()
@@ -86,7 +84,7 @@ def leptospirosis(patient_id, date, sessionid, app_route):
     # End of Import
     if patient_id is not None and date is not None:
         try:
-            result_dict, url_dict = process_xml_parallel_date_specific(patient_id, date, chmua_date_range=True, micro=True, immu=True)
+            result_dict, url_dict = process_xml_parallel(patient_id, date, chmua_date_range=True, micro=True, immu=True)
             time_fetch = time.perf_counter()
             logging.info('Session {} - {}: Fetched Date-Specifc Data: Time used: {}s'.format(sessionid, app_route, round(time_fetch - time_start, 4)))
         except:
@@ -97,8 +95,8 @@ def leptospirosis(patient_id, date, sessionid, app_route):
     if result_dict is not None:
         try:
             merged_df = df_merge(result_dict, date, micro_need=True, immu_need=True)
-            lepto_breed_groups = pd.read_csv("C:/Apache24/anna_common_assets/app_data/Breed_group_stratification.csv")
-            lepto_data, lepto_testids = lepto_preprocessing(merged_df, lepto_breed_groups, use_mat=False)
+
+            lepto_data, lepto_testids = lepto_preprocessing(merged_df, use_mat=False)
             prediction = requests.post(lepto_url, json=lepto_data.to_json()).json()
             if isinstance(prediction, list) == True:
                 logging.info("Raw Lepto Prediction returned from Flask Server: {}".format(prediction))
