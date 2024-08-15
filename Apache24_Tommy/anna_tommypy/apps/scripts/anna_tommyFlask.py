@@ -32,18 +32,6 @@ time_tommy = time.perf_counter()
 del tommy_sample_data, prediction
 logger2.info('Finished Importing TommyPy Modules, time used: {} seconds.'.format(round(time_tommy - time_sys, 4)))
 
-@app.route('/test_handling', methods=['GET'])
-def test_handling():
-    start_time = time.perf_counter()
-    analyzer = app.config['TommyAddisionClassifier']
-    tommy_sample_data = pd.read_csv(sample_initialize_path)
-    double_values = [float(arg) for arg in tommy_sample_data.loc[0]]
-    prediction = analyzer.TommyPy(*double_values)
-    end_time = time.perf_counter()
-    logger2.info('Prediction: {}'.format(prediction))
-    logger2.info('Time needed to run prediction: {} seconds.'.format(round(end_time - start_time, 4)))
-    return 'Successful'
-
 
 @app.route('/tommy_addisons', methods=['POST'])
 def tommy_addisons():
