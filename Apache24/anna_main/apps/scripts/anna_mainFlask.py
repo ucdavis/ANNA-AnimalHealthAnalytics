@@ -30,7 +30,7 @@ sys.path.append(current_dir)
 ## ANNA System Logs
 logger2 = logging.getLogger(__name__)
 logger2.setLevel(logging.DEBUG)
-ch = logging.FileHandler('./logs/anna_mainFlask.log')
+ch = logging.FileHandler('C:/Apache24/logs/anna_mainFlask.log')
 ch.setFormatter(logging.Formatter('%(asctime)s ; %(levelname)s ; %(name)s ; %(threadName)s ; %(message)s'))
 logger2.addHandler(ch)
 
