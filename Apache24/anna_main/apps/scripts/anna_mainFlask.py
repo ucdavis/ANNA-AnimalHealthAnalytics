@@ -47,9 +47,9 @@ logger2.info('Finished ANNA Initialization. Time used: {} seconds.'.format(round
 
 
 # ANNA URL Constructs
+# It will send to separate flask server
 
-# A Date-Specific Leptospirosis Calculation #Leptospriosis including CBC/CHEM/UA/MAT
-# Making use of a separate flask server for maintainance
+# Leptospirosis
 @app.route('/ml_classifier_run/leptospirosis', methods=["GET", 'POST'])
 def leptospirosis_classifier_flask():
     app_route = 'Lepto_Flask'
@@ -62,7 +62,7 @@ def leptospirosis_classifier_flask():
         user_ip_csv = app.config['UserIPs']
         user_ip_list = list(user_ip_csv['IP'])
         if real_ip not in user_ip_list:
-            logger2.info('Session {} - {}: Client IP {} is not in whitelist. Abort Connection.'.format(sessionid, app_route, real_ip))
+            logger2.info('Session {} - {}: Client IP {} not recognized. Abort Connection.'.format(sessionid, app_route, real_ip))
             abort(403)
         else:
             username = user_ip_csv['User'].iloc[user_ip_list.index(real_ip)]
@@ -96,9 +96,7 @@ def leptospirosis_classifier_flask():
             logger2.info('Session {} - {}: Request Ended - Total Time Used: {}s.'.format(sessionid, app_route, round(time_end - time_start, 4)))
             return json.dumps(data_return)
 
-
-# A Date-Specific Leptospirosis Calculation
-# Making use of a separate flask server for maintainance
+# TommyPy
 @app.route('/ml_classifier_run/tommy_addisons', methods=['GET', 'POST'])
 def tommy_addisons_flask():
     app_route = 'TommyPy_Flask'
@@ -111,7 +109,7 @@ def tommy_addisons_flask():
         user_ip_csv = app.config['UserIPs']
         user_ip_list = list(user_ip_csv['IP'])
         if real_ip not in user_ip_list:
-            logger2.info('Session {} - {}: Client IP {} is not in whitelist. Abort Connection.'.format(sessionid, app_route, real_ip))
+            logger2.info('Session {} - {}: Client IP {} not recognized. Abort Connection.'.format(sessionid, app_route, real_ip))
             abort(403)
         else:
             username = user_ip_csv['User'].iloc[user_ip_list.index(real_ip)]
