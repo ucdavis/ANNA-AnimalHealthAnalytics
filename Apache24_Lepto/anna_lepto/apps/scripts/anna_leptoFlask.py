@@ -24,7 +24,7 @@ ch.setFormatter(logging.Formatter('%(asctime)s ; %(levelname)s ; %(name)s ; %(th
 logger2.addHandler(ch)
 
 #Initializing Leptospirosis Classifier
-time_sys = time.perf_counter()
+time_start = time.perf_counter()
 sys.path.insert(0, 'C:/Apache24_Lepto/anna_lepto/assets/lepto-classifier')
 from lepto_classifier import LeptoClassifier
 from assets.LeptoFlask_helpers import lepto_d, data_dir
@@ -33,10 +33,8 @@ lepto_sample_data = pd.read_csv(sample_initialize_path)
 prediction = app.config['LeptoClassifier'].predict(data_path=lepto_sample_data.astype(lepto_d), use_mat=False)
 time_lepto = time.perf_counter()
 del lepto_sample_data, prediction
-lepto_breed_groups = pd.read_csv(data_dir + "Breed_group_stratification.csv")
-app.config['LeptoClassifier_lepto_breed_groups'] = lepto_breed_groups
-time_tommy = time.perf_counter()
-logger2.info('Finished Initializing Leptospirosis Modules, time used: {} seconds.'.format(round(time_tommy - time_sys, 4)))
+time_end = time.perf_counter()
+logger2.info('Finished Initializing Leptospirosis Modules, time used: {} seconds.'.format(round(time_end - time_start, 4)))
 
 @app.route('/test_handling', methods=['GET'])
 def test_handling():
