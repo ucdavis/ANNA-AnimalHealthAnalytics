@@ -27,7 +27,7 @@ logger2.addHandler(ch)
 time_start = time.perf_counter()
 sys.path.insert(0, 'C:/Apache24_Lepto/anna_lepto/assets/lepto-classifier')
 from lepto_classifier import LeptoClassifier
-from assets.LeptoFlask_helpers import lepto_d, data_dir
+from assets.LeptoFlask_helpers import lepto_d
 app.config['LeptoClassifier'] = LeptoClassifier()
 lepto_sample_data = pd.read_csv(sample_initialize_path)
 prediction = app.config['LeptoClassifier'].predict(data_path=lepto_sample_data.astype(lepto_d), use_mat=False)
@@ -36,22 +36,8 @@ del lepto_sample_data, prediction
 time_end = time.perf_counter()
 logger2.info('Finished Initializing Leptospirosis Modules, time used: {} seconds.'.format(round(time_end - time_start, 4)))
 
-@app.route('/test_handling', methods=['GET'])
-def test_handling():
-    try:
-        start_time = time.perf_counter()
-        clf = app.config['LeptoClassifier']
-        lepto_sample_data = pd.read_csv(sample_initialize_path)
-        pre = clf.predict(data_path=lepto_sample_data.astype(lepto_d), use_mat=False)
-        prediction = [int(pred_int) for pred_int in pre]
-        end_time = time.perf_counter()
-        logger2.info('Prediction: {}'.format(prediction))
-        logger2.info('Time needed to run prediction: {} seconds.'.format(round(end_time - start_time, 4)))
-        return 'Successful'
-    except:
-        return "{}".format(traceback.format_exc())
 
-### Need to work on the scripts below.
+## Leptospirosis
 @app.route('/leptospirosis', methods=['POST'])
 def leptospirosis():
     start_time = time.perf_counter()
