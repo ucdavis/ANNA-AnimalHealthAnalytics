@@ -1,9 +1,9 @@
-# ANNA-AnimalHealthAnalytics
+# ANNA - Animal Health Analytics
 A Python based Computational Server for analyzing Animal Health Data with ML Classifiers.
 
 School of Veterinary Medicine, University of California Davis
 
-Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Chris Brandt, Krystle Reagan, Stefan M. Keller
+Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle Reagan, Stefan M. Keller
 
 ## Table of Content
 * [Introduction](#introduction)
