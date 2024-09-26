@@ -3,7 +3,7 @@ A Python based Computational Server for analyzing Animal Health Data with ML Cla
 
 School of Veterinary Medicine, University of California Davis
 
-Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle Reagan, Stefan M. Keller
+Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle Reagan, Allison Zwingenberger, Stefan M. Keller
 
 ## Table of Content
 * [Introduction](#introduction)
@@ -15,9 +15,7 @@ Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, 
     * [MySQL Community Server](#mysql-community-server)
     * [Python Packages](#python-packages)
 * [Folder Structure](#folder-structure)
-* [ML Classifiers]()
-
-
+* [ML Classifiers](#ml-classifiers)
 
 ## Introduction
 
@@ -142,3 +140,9 @@ README.md
 [Link to Original GitHub Repo](https://github.com/krystlereagan/Tommy)
 
 [Link to Publication](https://www.sciencedirect.com/science/article/abs/pii/S0739724019300748?via%3Dihub)
+
+### Shunt
+
+[Link to Original GitHub Repo](https://github.com/MakanFar/pss_classification)
+
+[Link to Publication](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC11024426/)
