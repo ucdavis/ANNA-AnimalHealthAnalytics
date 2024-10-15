@@ -1,7 +1,7 @@
 # ANNA MAIN FLASK SCRIPT APP
 # UC DAVIS
 # School of Veterinary Medicine
-# Last Updated: Aug 14 2024
+# Last Updated: Sept 26 2024
 # Last Updated By: Kelvin Kong
 # Start of Imports
 
@@ -43,6 +43,7 @@ app.config['UserIPs'] = user_ip_csv
 logger2.info('Loaded Approved IP List.')
 lepto_bool = True
 tommy_bool = True
+shunt_bool = True
 initialize_time = time.perf_counter()
 logger2.info('Finished ANNA Initialization. Time used: {} seconds.'.format(round(initialize_time - time_sys, 4)))
 
@@ -145,4 +146,52 @@ def tommy_addisons_flask():
             logger2.info('Session {} - {}: Request Ended - Total Time Used: {}s.'.format(sessionid, app_route, round(time_end - time_start, 4)))
             return json.dumps(data_return)
            
-        
+# A Date-Specific Shunt Classifier
+@app.route('/ml_classifier_run/shunt', methods=['GET', 'POST'])
+def shunt_flask():
+    app_route = 'Shunt_Flask'
+    if shunt_bool == False:
+        abort(503)
+    else:
+        sessionid = randint(100001, 999999)
+        real_ip = request.environ['HTTP_X_FORWARDED_FOR']
+        logger2.info('Session {} - {}: Client IP: {} connection incoming.'.format(sessionid, app_route, real_ip))
+        user_ip_csv = app.config['UserIPs']
+        user_ip_list = list(user_ip_csv['IP'])
+        if real_ip not in user_ip_list:
+            logger2.info('Session {} - {}: Client IP {} is not in whitelist. Abort Connection.'.format(sessionid, app_route, real_ip))
+            abort(403)
+        else:
+            username = user_ip_csv['User'].iloc[user_ip_list.index(real_ip)]
+            logger2.info('Session {} - {}: Client IP {} connected approved. User: {}'.format(sessionid, app_route, real_ip, username))
+            # Importing required Elements:
+            logger2.info('Session {} - {}: ML Classifier started.'.format(sessionid, app_route))
+            time_start = time.perf_counter()
+             # Imports
+            time_shunt_start = time.perf_counter()
+            # End of Import
+
+            if request.method == "POST":
+                json_data = request.json
+                try:
+                    patient_id, date = get_patient_id_n_date_anna_mini(json_data)
+                    logger2.info('Session {} - {}: PatientID: {}, Test Date: {}'.format(sessionid, app_route, patient_id, date))
+                except:
+                    patient_id = None
+                    date = None
+                    logger2.debug('Session {} - {}: Unable to fetch date-specific data from VMACS.'.format(sessionid, app_route))
+            else:
+                try:
+                    patient_id = request.args.get('PatientNum')
+                    date = request.args.get('TestDate')
+                    logger2.info('Session {} - {}: PatientID: {}, Test Date: {}'.format(sessionid, app_route, patient_id, date))
+                except:
+                    patient_id = None
+                    date = None
+                    logger2.debug('Session {} - {}: Unable to fetch date-specific data from VMACS.'.format(sessionid, app_route))
+
+            data_return = shunt_anna_mini(patient_id, date, sessionid, app_route)
+            time_end = time.perf_counter()
+            logger2.info('Session {} - {}: {}.'.format(sessionid, app_route, data_return))
+            logger2.info('Session {} - {}: Request Ended - Total Time Used: {}s.'.format(sessionid, app_route, round(time_end - time_start, 4)))
+            return json.dumps(data_return)        
