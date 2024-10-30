@@ -1,14 +1,15 @@
 # ANNA - Animal Health Analytics
-A Python based Computational Server for analyzing Animal Health Data with ML Classifiers.
+A Python based Computational Server for analyzing Animal Electronic Health Record Data with machine learning (ML) Classifiers.
 
 School of Veterinary Medicine, University of California Davis
 
-Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle L Reagan, Allison Zwingenberger, Stefan M. Keller
+Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle L. Reagan, Allison Zwingenberger, Stefan M. Keller
 
 License: GNU Affero General Public License
 
 ## Table of Content
 * [Introduction](#introduction)
+* [Publications](#publications)
 * [Software Requirement](#software-requirement)
 * [Installation](#installation)
     * [Python](#python)
@@ -23,6 +24,12 @@ License: GNU Affero General Public License
 ## Introduction
 
 This GitHub repository contains the required source codes to run ANNA.
+
+## Publications
+
+A technical paper discussing ANNA computational infrastructure is available on arXiv preprint server.
+- Title: **Enhancing AI Accessibility in Veterinary Medicine: Linking Classifiers and Electronic Health Records**
+- DOI: https://doi.org/10.48550/arXiv.2410.14625
 
 ## Software Requirement
 
