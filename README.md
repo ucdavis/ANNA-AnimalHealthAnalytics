@@ -3,7 +3,7 @@ A Python based Computational Server for analyzing Animal Health Data with ML Cla
 
 School of Veterinary Medicine, University of California Davis
 
-Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle Reagan, Allison Zwingenberger, Stefan M. Keller
+Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, Titus C. Brown, Krystle L Reagan, Allison Zwingenberger, Stefan M. Keller
 
 License: GNU Affero General Public License
 
