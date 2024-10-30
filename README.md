@@ -7,6 +7,8 @@ Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, 
 
 License: GNU Affero General Public License
 
+Last Update: October 30 2024
+
 ## Table of Content
 * [Introduction](#introduction)
 * [Publications](#publications)
