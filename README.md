@@ -1,4 +1,4 @@
-# ANNA - Animal Health Analytics with Electronic Health Record Data
+# ANNA - AI Animal Health Analytics with Electronic Health Record Data
 A Python based Computational Server for analyzing Animal Electronic Health Record Data with machine learning (ML) Classifiers.
 
 School of Veterinary Medicine, University of California Davis
