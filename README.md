@@ -7,7 +7,7 @@ Authors: Chun Yin (Kelvin) Kong, Picasso Vasquez, Makan Farhoodi, Chris Brandt, 
 
 License: GNU Affero General Public License
 
-Last Update: October 30 2024
+Last Update: Sept 6 2025
 
 ## Table of Content
 * [Introduction](#introduction)
@@ -35,13 +35,14 @@ A technical paper discussing ANNA computational infrastructure is available on a
 
 ## Software Requirement
 
-To impelemnt ANNA, we would need the following software and packages to start with. In the following instructions, we are demostrated based on Windows machines.
+To impelemnt ANNA, we would need the following software and packages to start with. Our implementation is based on machines running Windows Server Operating System. The software/package/dependencies would be different if the host machine runs with different operating systems.
 
 - Python Version 3.7 and 3.9
 - miniconda 
 - Apache HTTP Server
 - MySQL Community Server (GPL) Version 8.4.2 LTS
 - MySQL Workbench (Optional)
+      - MySQL Workbench is the GUI of the MySQL Community Server Management System
 - MATLAB Runtime R2019b (v9.7)
 - List of Python Packages specified in the requirement text file.
 
@@ -140,20 +141,26 @@ README.md
 
 ## ML Classifiers
 
-### Lepto
+### Leptospirosis Classifier
+
+Reagan KL, Deng S, Sheng J, Sebastian J, Wang Z, Huebner SN, et al. Use of machine-learning algorithms to aid in the early detection of leptospirosis in dogs. J Vet Diagn Invest. 2022;34:612–21. https://doi.org/10.1177/10406387221096781.
 
 [Link to Original GitHub Repo](https://github.com/sf-deng/lepto-classifier)
 
 [Link to Publication](https://doi.org/10.1177%2F10406387221096781)
 
 
-### TommyPy
+### Addisons Classifier (TommyPy)
+
+Reagan KL, Reagan BA, Gilor C. Machine learning algorithm as a diagnostic tool for hypoadrenocorticism in dogs. Domest Anim Endocrinol. 2020;72:106396. https://doi.org/10.1016/j.domaniend.2019.106396.
 
 [Link to Original GitHub Repo](https://github.com/krystlereagan/Tommy)
 
 [Link to Publication](https://www.sciencedirect.com/science/article/abs/pii/S0739724019300748?via%3Dihub)
 
-### Shunt
+### Portosystemic Shunt Classifier
+
+Farhoodimoghadam M, Reagan KL, Zwingenberger AL. Diagnosis and classification of portosystemic shunts: a machine learning retrospective case-control study. Front Vet Sci. 2024;11:1291318. https://doi.org/10.3389/fvets.2024.1291318.
 
 [Link to Original GitHub Repo](https://github.com/MakanFar/pss_classification)
 
